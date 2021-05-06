@@ -1,0 +1,1 @@
+curl -v --insecure --cookie logincookies.cjar --data 'cid=8C-85-90-16-D0-AB&ap=74-DA-88-1F-A1-F2&ssid=tempTest&rid=0&t=1620304220&time=1620372281' 'https://192.168.1.5:443/extportal/Default/auth?token=bc8d6c59eb574295968f6f2f0d082617'

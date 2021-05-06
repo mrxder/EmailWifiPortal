@@ -1,0 +1,1 @@
+curl -v --insecure --cookie logincookies.cjar -X POST https://192.168.1.5:443/logout?token=f3146a6fdff24700896a0a3f839be226

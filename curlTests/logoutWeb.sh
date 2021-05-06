@@ -1,0 +1,1 @@
+curl -v --insecure --cookie logincookies.cjar -d '{"method":"logout","params":{}}' -X POST "https://192.168.1.5:443/web/v1/controller?ajax&token=f3146a6fdff24700896a0a3f839be226"
