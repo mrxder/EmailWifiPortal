@@ -33,6 +33,14 @@ app.get('/', (req, res) => {
 
 });
 
+app.get('/main.css', (req, res) => {
+    res.sendFile(__dirname + '/assets/main.css');
+});
+
+app.get('/logo.png', (req, res) => {
+    res.sendFile(__dirname + '/assets/logo.png');
+});
+
 app.get('/login', async (req, res) => {
     try {
         const sessionDuration = 60 * 60 * 24 * parseInt(process.env.SESSION_DURATION_DAYS || '14');
@@ -42,6 +50,10 @@ app.get('/login', async (req, res) => {
         const reffer = req.headers['referer'] || '';
         const refferUrl = new URL(reffer);
         const refPara : URLSearchParams = refferUrl.searchParams;
+
+        if(!refPara.has('cid')) {
+            throw new Error("No cid presend");
+        }
 
         const requestTime = parseInt(refPara.get('t') || '0');
         const sessionTillTime = requestTime + sessionDuration;
@@ -92,8 +104,8 @@ app.get('/login', async (req, res) => {
         const mailAddress = String(req.query.email);
         fs.appendFileSync('src/assets/emails.txt', mailAddress+'\r\n');
 
-        console.log(authResponse.data.message);
-        console.log(mailAddress);
+        // console.log(authResponse.data.message);
+        // console.log(mailAddress);
         
         //res.send('ok');
         res.redirect(301, refPara.get('redirectUrl') || '/sucess');
